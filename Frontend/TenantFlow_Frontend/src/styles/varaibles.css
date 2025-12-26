@@ -1,0 +1,24 @@
+:root {
+  /* Brand Colors */
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --danger: #dc2626;
+
+  /* Neutral Colors */
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --border: #e5e7eb;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+
+  /* Sizes */
+  --radius: 10px;
+  --radius-sm: 6px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+
+  /* Transitions */
+  --transition: 0.2s ease;
+}

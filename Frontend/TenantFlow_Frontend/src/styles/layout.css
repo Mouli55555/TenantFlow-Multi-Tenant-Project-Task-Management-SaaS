@@ -1,0 +1,16 @@
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  background: white;
+  border-right: 1px solid var(--border);
+  padding: 20px;
+}
+
+.main-content {
+  flex: 1;
+  padding: 24px;
+}
