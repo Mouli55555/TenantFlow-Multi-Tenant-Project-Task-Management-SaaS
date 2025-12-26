@@ -1,0 +1,8 @@
+ALTER TABLE users
+DROP CONSTRAINT fk_users_tenant;
+
+ALTER TABLE users
+ADD CONSTRAINT fk_users_tenant
+FOREIGN KEY (tenant_id)
+REFERENCES tenants(id)
+DEFERRABLE INITIALLY DEFERRED;
