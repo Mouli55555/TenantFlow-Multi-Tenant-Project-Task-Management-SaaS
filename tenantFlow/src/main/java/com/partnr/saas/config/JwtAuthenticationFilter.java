@@ -19,15 +19,18 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final JwtUtil jwtUtil;
     private final CustomUserDetailsService userDetailsService;
 
-    public JwtAuthenticationFilter(JwtUtil jwtUtil, CustomUserDetailsService userDetailsService) {
+    public JwtAuthenticationFilter(JwtUtil jwtUtil,
+                                   CustomUserDetailsService userDetailsService) {
         this.jwtUtil = jwtUtil;
         this.userDetailsService = userDetailsService;
     }
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
-        return request.getRequestURI().startsWith("/api/auth/");
+        return request.getMethod().equalsIgnoreCase("OPTIONS")
+                || request.getRequestURI().startsWith("/api/auth/");
     }
+
 
     @Override
     protected void doFilterInternal(
@@ -35,6 +38,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             HttpServletResponse response,
             FilterChain chain
     ) throws ServletException, IOException {
+
+        // 🔥 CRITICAL: allow CORS preflight
+        if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+            chain.doFilter(request, response);
+            return;
+        }
 
         String header = request.getHeader("Authorization");
 
@@ -74,3 +83,4 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
     }
 }
+
