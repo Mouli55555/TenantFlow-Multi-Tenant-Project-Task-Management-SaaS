@@ -34,7 +34,8 @@ export default function Login() {
         tenantSubdomain: form.tenantSubdomain,
       })
 
-      const { token, user } = res.data.data
+      console.log(res.data)
+      const { token, user } = res.data
 
       // ✅ Store JWT (PDF requirement)
       if (form.remember) {
